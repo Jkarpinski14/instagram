@@ -1,0 +1,11 @@
+body{
+	background-image: url(http://joegibbsracing.com/wp-content/uploads/2011/02/wallpaper-mortal-kombat.jpeg);
+}
+
+.linkdiv{
+	color: black;
+	background-color: red;
+	text-align: center;
+	height: 200px;
+	font-size: 25px;
+}
