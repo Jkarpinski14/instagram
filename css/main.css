@@ -9,3 +9,16 @@ body{
 	height: 200px;
 	font-size: 25px;
 }
+
+@media (min-device-width: 375px) and (max-width: 667px){
+html,body{
+	width: 100%;
+	height: 100%;
+	background-image: url(http://www.psdgraphics.com/file/checkered-flag-background.jpg);
+}
+.linkdiv{
+	font-size: 100px;
+	background-color: yellow;
+	width: 374px;
+}
+}
