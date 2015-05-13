@@ -25,9 +25,18 @@ function connectToInstagram($url){
 	return $result; //Can be called over and over again when we want to connect to Instagram
 }
 
+//Function to get userID since userName doesn't allow us to get pictures
+function getUserID($username){
+	$url = 'http://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID;
+	$instagramInfo = connectToInstagram($url);
+	$results = json_decode($instagramInfo, true);
+
+	echo $results['data']['0']['id'];
+}
+
 //Isset dertermines if a variable is set and not NULL
 if (isset($_GET['code'])){
-	$code = (($_GET['code']));
+	$code = $_GET['code'];
 	$url = 'https://api.instagram.com/oauth/access_token';
 	$access_token_settings = array('client_id' => clientID, 
 									'client_secret' => clientSecret,
@@ -44,10 +53,10 @@ if (isset($_GET['code'])){
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //In live work-production, we want to set this to true
 
 $result = curl_exec($curl); //Stores all the above information in this variable
-curl_close();
+curl_close($curl);
 
 $results = json_decode($result, true);
-echo $results['user']['username'];
+getUserID($results['user']['username']);
 }
 
 else{
