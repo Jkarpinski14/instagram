@@ -27,10 +27,15 @@ if (isset($_GET['code'])){
 	curl_setopt($curl, CURLOPT_POSTFIELDS, $access_token_settings); //Setting the POSTFIELDS to the array setup we created
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //Set equal to one because we are getting strings back
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //In live work-production, we want to set this to true
-}
 
 $result = curl_exec($curl); //Stores all the above information in this variable
 curl_close();
+
+$results = json_decode($result, true);
+echo $results['user']['username'];
+}
+
+else{
 ?>
 
 <!DOCTYPE html>
@@ -49,3 +54,6 @@ curl_close();
 	<script type="text/javascript" src=""></script>
 </body>
 </html>
+<?php 
+}
+?>
