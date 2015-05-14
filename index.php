@@ -26,13 +26,26 @@ function connectToInstagram($url){
 }
 
 //Function to get userID since userName doesn't allow us to get pictures
-function getUserID($username){
-	$url = 'http://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID;
+function getUserID($userName){
+	$url = 'https://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID; //The s indicates a secure connection
 	$instagramInfo = connectToInstagram($url);
 	$results = json_decode($instagramInfo, true);
 
 	echo $results['data']['0']['id'];
 }
+
+//Function to print images onto screen
+function printImages($userID){
+	$url = 'https://api.instagram.com/v1/users/'.$userID.'/media/recent?client_id='.clientID.'&count=5'; //Requests last 5 pics
+	$instagramInfo = connectToInstagram($url); //Connecting to Instagram
+	$results = json_decode($instagramInfo, true); //Creating a local variable to decode json information
+	//Parse through the information one by one
+	foreach ($results['data'] as $items) {
+		$image_url = $items['images']['low_resolution']['url']; //Going to go through all of my results and give myself back the URL of those pictures because we want to save it in the PHP server
+		echo '<img src=" '.$image_url.'"/><br/>';
+	}
+}
+
 
 //Isset dertermines if a variable is set and not NULL
 if (isset($_GET['code'])){
@@ -56,7 +69,12 @@ $result = curl_exec($curl); //Stores all the above information in this variable
 curl_close($curl);
 
 $results = json_decode($result, true);
-getUserID($results['user']['username']);
+
+$userName = $results['user']['username'];
+
+$userID = getUserID($userName);
+
+printImages($userID);
 }
 
 else{
