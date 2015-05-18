@@ -46,6 +46,10 @@ function printImages($userID){
 		//Calling a function to save the $image_url
 		savePictures($image_url);
 	}
+
+	echo '<script type="text/javascript">';
+	echo 'hardwell.play();';
+	echo '</script>';
 }
 //Saves pics to folder
 function savePictures($image_url){
@@ -107,7 +111,7 @@ else{
 		<br/>
 		<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code" class="button">Login</a> <!--Response will always be code-->
 	</div>
-	<script type="text/javascript" src=""></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
 <?php 
