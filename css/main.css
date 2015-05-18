@@ -8,6 +8,24 @@ body{
 	text-align: center;
 	height: 200px;
 	font-size: 25px;
+	background-image: url(http://i.ytimg.com/vi/xcYpJk6Mc8c/maxresdefault.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+}
+.button{
+	color: black;
+	border: 3px solid black;
+	font-size: 30px;
+	font-style: oblique;
+	text-decoration: none;
+	background-color: white;
+}
+.button:hover{
+	color: black;
+	font-size: 50px;
+	font-style: oblique;
+	text-decoration: none;
 }
 
 @media (min-device-width: 375px) and (max-width: 667px){
@@ -20,5 +38,8 @@ html,body{
 	font-size: 100px;
 	background-color: yellow;
 	width: 374px;
+}
+.med{
+	background-image: url(http://www.psdgraphics.com/file/checkered-flag-background.jpg);
 }
 }

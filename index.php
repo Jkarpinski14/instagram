@@ -42,16 +42,16 @@ function printImages($userID){
 	//Parse through the information one by one
 	foreach ($results['data'] as $items) {
 		$image_url = $items['images']['low_resolution']['url']; //Going to go through all of my results and give myself back the URL of those pictures because we want to save it in the PHP server
-		echo '<img src=" '.$image_url.'"/><br/>';
+		 echo '<body class="med" background = "http://upload.wikimedia.org/wikipedia/commons/b/bb/SplitPoint_0072.jpg"><center></br><img src=" '.$image_url.'"/></center></body><br/>';
 		//Calling a function to save the $image_url
 		savePictures($image_url);
 	}
 }
 //Saves pics to folder
 function savePictures($image_url){
-	echo $image_url.'<br>'; 
+	return $image_url.'<br>'; 
 	$filename = basename($image_url); //The filename is what we are storing. Basename is the built in PHP method we are using to store $image_url
-	echo $filename.'<br>';
+	return $filename.'<br>';
 
 	$destination = ImageDirectory . $filename; //Making sure the image doesn't exist in the storage
 	file_put_contents($destination, file_get_contents($image_url)); //Grabs image file and stores it in our server
@@ -103,7 +103,9 @@ else{
 		<!--Creating a login for people to go and give approval for our web app to access their Instagram account-->
 		<!--After getting approval, we are going to have the information so that we can play with it-->
 		<!--Once client_id and redirect_uri were set to blank, you'll have to echo it out from the constants-->
-		<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">Login</a> <!--Response will always be code-->
+		<br/>
+		<br/>
+		<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code" class="button">Login</a> <!--Response will always be code-->
 	</div>
 	<script type="text/javascript" src=""></script>
 </body>
